@@ -52,10 +52,21 @@ class Stack(Queue):
 # print(len(fifo))
 
 #test LIFO stack
-lifo = Stack()
-lifo.enqueue("1st")
-lifo.enqueue("2nd")
-lifo.enqueue("3rd")
+# lifo = Stack()
+# lifo.enqueue("1st")
+# lifo.enqueue("2nd")
+# lifo.enqueue("3rd")
 
-for element in lifo:
-    print(element)
+# for element in lifo:
+#     print(element)
+
+#Using a Python list as a rudimentary stack
+lifo = []
+
+lifo.append("1st")
+lifo.append("2nd")
+lifo.append("3rd")
+
+print(lifo.pop())
+print(lifo.pop())
+print(lifo.pop())
