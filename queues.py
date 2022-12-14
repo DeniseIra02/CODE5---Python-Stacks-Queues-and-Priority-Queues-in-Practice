@@ -1,5 +1,5 @@
 from collections import deque
-from heapq import heappush
+from heapq import heappush, heappop
 
 #Building a Queue Data Type
 class Queue:
@@ -78,4 +78,6 @@ heappush(fruits, "orange")
 heappush(fruits, "apple")
 heappush(fruits, "banana")
 
-print(fruits)
+heappop(fruits)
+
+#print(fruits)
