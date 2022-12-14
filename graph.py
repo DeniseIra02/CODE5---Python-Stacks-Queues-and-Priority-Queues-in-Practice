@@ -298,3 +298,23 @@ def dijkstra_shortest_path(graph, source, destination, weight_factory):
     
 # for city in depth_first_traverse(graph, nodes["edinburgh"]):
 #     print(city.name)
+
+#Dijkstra’s Algorithm Test
+nodes, graph = load_graph("roadmap.dot", City.from_dict)
+
+city1 = nodes["london"]
+city2 = nodes["edinburgh"]
+
+def distance(weights):
+    return float(weights["distance"])
+
+for city in dijkstra_shortest_path(graph, city1, city2, distance):
+    print(city.name)
+    
+def weight(node1, node2, weights):
+    return distance(weights)
+
+for city in nx.dijkstra_path(graph, city1, city2, weight):
+    print(city.name)
+
+
