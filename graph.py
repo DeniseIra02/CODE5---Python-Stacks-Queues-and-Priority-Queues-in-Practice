@@ -1,9 +1,10 @@
 import networkx as nx
 
 from collections import deque
+from math import inf as infinity
 from typing import NamedTuple
 
-from queues import Queue, Stack
+from queues import MutableMinHeap, Queue, Stack
 
 
 #directory path for graphviz
@@ -254,21 +255,21 @@ def search(traverse, graph, source, predicate, order_by=None):
 #     print("Not Found")
 
 # breadth_first_search and depth_first_search
-from graph import (
-    City,
-    load_graph,
-    depth_first_traverse,
-    depth_first_search as dfs,
-)
+# from graph import (
+#     City,
+#     load_graph,
+#     depth_first_traverse,
+#     depth_first_search as dfs,
+# )
 
-def is_twentieth_century(city):
-    return city.year and 1901 <= city.year <= 2000
+# def is_twentieth_century(city):
+#     return city.year and 1901 <= city.year <= 2000
 
-nodes, graph = load_graph("roadmap.dot", City.from_dict)
+# nodes, graph = load_graph("roadmap.dot", City.from_dict)
 
-city = dfs(graph, nodes["edinburgh"], is_twentieth_century)
+# city = dfs(graph, nodes["edinburgh"], is_twentieth_century)
 
-print(city.name)
+# print(city.name)
     
-for city in depth_first_traverse(graph, nodes["edinburgh"]):
-    print(city.name)
+# for city in depth_first_traverse(graph, nodes["edinburgh"]):
+#     print(city.name)
