@@ -27,6 +27,17 @@ class Stack(Queue):
     def dequeue(self):
         return self._elements.pop()
 
+#Building a Priority Queue Data Type
+class PriorityQueue:
+    def __init__(self):
+        self._elements = []
+
+    def enqueue_with_priority(self, priority, value):
+        heappush(self._elements, (-priority, value))
+
+    def dequeue(self):
+        return heappop(self._elements)[1]
+
 #TEST
 
 #Test FIFO queue
@@ -90,10 +101,23 @@ class Stack(Queue):
 
 # print(fruits)
 
-#Tupple comparison
-person1 = ("John", "Brown", 42)
-person2 = ("John", "Doe", 42)
-person3 = ("John", "Doe", 24)
+# Tuple comparison
+# person1 = ("John", "Brown", 42)
+# person2 = ("John", "Doe", 42)
+# person3 = ("John", "Doe", 24)
 
-print(person1 < person2)
-print(person2 < person3)
+# print(person1 < person2)
+# print(person2 < person3)
+
+#Priority Queue Test
+CRITICAL = 3
+IMPORTANT = 2
+NEUTRAL = 1
+
+messages = PriorityQueue()
+messages.enqueue_with_priority(IMPORTANT, "Windshield wipers turned on")
+messages.enqueue_with_priority(NEUTRAL, "Radio station tuned in")
+messages.enqueue_with_priority(CRITICAL, "Brake pedal depressed")
+messages.enqueue_with_priority(IMPORTANT, "Hazard lights turned on")
+
+print(messages.dequeue())
