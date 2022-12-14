@@ -1,8 +1,18 @@
 from collections import deque
 from heapq import heappush, heappop
+from itertools import count
 
+#Refactoring the Code Using a Mixin Class
+class IterableMixin:
+    def __len__(self):
+        return len(self._elements)
+
+    def __iter__(self):
+        while len(self) > 0:
+            yield self.dequeue()
+            
 #Building a Queue Data Type
-class Queue:
+class Queue(IterableMixin):
     def __init__(self, *elements):
         self._elements = deque(elements)
 
@@ -28,15 +38,17 @@ class Stack(Queue):
         return self._elements.pop()
 
 #Building a Priority Queue Data Type
-class PriorityQueue:
+class PriorityQueue(IterableMixin):
     def __init__(self):
         self._elements = []
+        self._counter = count()
 
     def enqueue_with_priority(self, priority, value):
-        heappush(self._elements, (-priority, value))
+        element = (-priority, next(self._counter), value)
+        heappush(self._elements, element)
 
     def dequeue(self):
-        return heappop(self._elements)[1]
+        return heappop(self._elements)[-1]
 
 #TEST
 
@@ -110,14 +122,30 @@ class PriorityQueue:
 # print(person2 < person3)
 
 #Priority Queue Test
-CRITICAL = 3
-IMPORTANT = 2
-NEUTRAL = 1
+# CRITICAL = 3
+# IMPORTANT = 2
+# NEUTRAL = 1
 
-messages = PriorityQueue()
-messages.enqueue_with_priority(IMPORTANT, "Windshield wipers turned on")
-messages.enqueue_with_priority(NEUTRAL, "Radio station tuned in")
-messages.enqueue_with_priority(CRITICAL, "Brake pedal depressed")
-messages.enqueue_with_priority(IMPORTANT, "Hazard lights turned on")
+# messages = PriorityQueue()
+# messages.enqueue_with_priority(IMPORTANT, "Windshield wipers turned on")
+# messages.enqueue_with_priority(NEUTRAL, "Radio station tuned in")
+# messages.enqueue_with_priority(CRITICAL, "Brake pedal depressed")
+# messages.enqueue_with_priority(IMPORTANT, "Hazard lights turned on")
 
-print(messages.dequeue())
+# print(messages.dequeue())
+
+# #making the priority a negative number to make the highest one becomes the lowest
+# CRITICAL = 3
+# IMPORTANT = 2
+# NEUTRAL = 1
+
+# messages = PriorityQueue()
+# messages.enqueue_with_priority(IMPORTANT, "Windshield wipers turned on")
+# messages.enqueue_with_priority(NEUTRAL, "Radio station tuned in")
+# messages.enqueue_with_priority(CRITICAL, "Brake pedal depressed")
+# messages.enqueue_with_priority(IMPORTANT, "Hazard lights turned on")
+
+# print(messages.dequeue())
+# print(messages.dequeue())
+# print(messages.dequeue())
+# print(messages.dequeue())
