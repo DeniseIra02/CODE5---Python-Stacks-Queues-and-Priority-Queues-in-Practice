@@ -1,5 +1,6 @@
 import networkx as nx
 
+from collections import deque
 from typing import NamedTuple
 
 from queues import Queue
@@ -69,6 +70,19 @@ def shortest_path(graph, source, destination, order_by=None):
                 previous[neighbor] = node
                 if neighbor == destination:
                     return retrace(previous, source, destination)
+
+def retrace(previous, source, destination):
+    path = deque()
+
+    current = destination
+    while current != source:
+        path.appendleft(current)
+        current = previous.get(current)
+        if current is None:
+            return None
+
+    path.appendleft(source)
+    return list(path)
         
 #Test:
 
