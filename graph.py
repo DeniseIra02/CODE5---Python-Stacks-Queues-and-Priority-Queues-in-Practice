@@ -46,6 +46,10 @@ def load_graph(filename, node_factory):
 
 #to identify the graph and node
 # nodes, graph = load_graph("roadmap.dot", City.from_dict)
-
 # print(nodes["london"])
 # print(graph)
+
+#to identify the neighbors of a given city 
+nodes, graph = load_graph("roadmap.dot", City.from_dict)
+for neighbor in graph.neighbors(nodes["london"]):
+    print(neighbor.name)
