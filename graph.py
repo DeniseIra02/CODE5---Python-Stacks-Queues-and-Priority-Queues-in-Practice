@@ -3,7 +3,7 @@ import networkx as nx
 from collections import deque
 from typing import NamedTuple
 
-from queues import Queue
+from queues import Queue, Stack
 
 
 #directory path for graphviz
@@ -86,6 +86,19 @@ def retrace(previous, source, destination):
 
 def connected(graph, source, destination):
     return shortest_path(graph, source, destination) is not None
+
+def depth_first_traverse(graph, source, order_by=None):
+    stack = Stack(source)
+    visited = set()
+    while stack:
+        if (node := stack.dequeue()) not in visited:
+            yield node
+            visited.add(node)
+            neighbors = list(graph.neighbors(node))
+            if order_by:
+                neighbors.sort(key=order_by)
+            for neighbor in reversed(neighbors):
+                stack.enqueue(neighbor)
 
         
 #Test:
@@ -207,15 +220,17 @@ def connected(graph, source, destination):
 # print(connected(graph, nodes["belfast"], nodes["derry"]))
 
 #Depth-First Search using a LIFO Queue
-def is_twentieth_century(year):
-    return year and 1901 <= year <= 2000
+# def is_twentieth_century(year):
+#     return year and 1901 <= year <= 2000
 
-nodes, graph = load_graph("roadmap.dot", City.from_dict)
-for node in nx.dfs_tree(graph, nodes["edinburgh"]):
-    print("📍", node.name)
-    if is_twentieth_century(node.year):
-        print("Found:", node.name, node.year)
-        break
+# nodes, graph = load_graph("roadmap.dot", City.from_dict)
+# for node in nx.dfs_tree(graph, nodes["edinburgh"]):
+#     print("📍", node.name)
+#     if is_twentieth_century(node.year):
+#         print("Found:", node.name, node.year)
+#         break
 
-else:
-    print("Not Found")
+# else:
+#     print("Not Found")
+
+
