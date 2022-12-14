@@ -83,6 +83,10 @@ def retrace(previous, source, destination):
 
     path.appendleft(source)
     return list(path)
+
+def connected(graph, source, destination):
+    return shortest_path(graph, source, destination) is not None
+
         
 #Test:
 
