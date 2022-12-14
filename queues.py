@@ -28,12 +28,25 @@ class Stack(Queue):
 #TEST
 
 #Test FIFO queue
+# fifo = Queue()
+# fifo.enqueue("1st")
+# fifo.enqueue("2nd")
+# fifo.enqueue("3rd")
+
+# print(fifo.dequeue())
+# print(fifo.dequeue())
+# print(fifo.dequeue())
+
+#Test (by making it iterable)
 fifo = Queue()
 fifo.enqueue("1st")
 fifo.enqueue("2nd")
 fifo.enqueue("3rd")
 
-print(fifo.dequeue())
-print(fifo.dequeue())
-print(fifo.dequeue())
+print(len(fifo))
+
+for element in fifo:
+    print(element)
+
+print(len(fifo))
 
