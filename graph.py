@@ -2,6 +2,9 @@ import networkx as nx
 
 from typing import NamedTuple
 
+from queues import Queue
+
+
 #directory path for graphviz
 import os
 os.add_dll_directory("C:/Program Files/Graphviz/bin")
@@ -84,21 +87,21 @@ def load_graph(filename, node_factory):
 # else:
 #     print("Not Found")
 
-#sort the neighbors according to some criteria
-def is_twentieth_century(year):
-    return year and 1901 <= year <= 2000
+#sort the neighbors according to some criteria(latitude)
+# def is_twentieth_century(year):
+#     return year and 1901 <= year <= 2000
 
-nodes, graph = load_graph("roadmap.dot", City.from_dict)
+# nodes, graph = load_graph("roadmap.dot", City.from_dict)
 
-def order(neighbors):
-    def by_latitude(city):
-        return city.latitude
-    return iter(sorted(neighbors, key=by_latitude, reverse=True))
+# def order(neighbors):
+#     def by_latitude(city):
+#         return city.latitude
+#     return iter(sorted(neighbors, key=by_latitude, reverse=True))
 
-for node in nx.bfs_tree(graph, nodes["edinburgh"], sort_neighbors=order):
-    print("📍", node.name)
-    if is_twentieth_century(node.year):
-        print("Found:", node.name, node.year)
-        break
-else:
-    print("Not Found")
+# for node in nx.bfs_tree(graph, nodes["edinburgh"], sort_neighbors=order):
+#     print("📍", node.name)
+#     if is_twentieth_century(node.year):
+#         print("Found:", node.name, node.year)
+#         break
+# else:
+#     print("Not Found")
