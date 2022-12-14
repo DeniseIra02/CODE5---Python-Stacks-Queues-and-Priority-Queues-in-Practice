@@ -1,4 +1,5 @@
 from collections import deque
+from heapq import heappush
 
 #Building a Queue Data Type
 class Queue:
@@ -11,7 +12,7 @@ class Queue:
     def __iter__(self):
         while len(self) > 0:
             yield self.dequeue()
-            
+
     def __init__(self):
         self._elements = deque()
 
@@ -20,8 +21,8 @@ class Queue:
 
     def dequeue(self):
         return self._elements.popleft()
-    
-#Building a Stack Data Type    
+
+#Building a Stack Data Type
 class Stack(Queue):
     def dequeue(self):
         return self._elements.pop()
@@ -61,12 +62,20 @@ class Stack(Queue):
 #     print(element)
 
 #Using a Python list as a rudimentary stack
-lifo = []
+# lifo = []
 
-lifo.append("1st")
-lifo.append("2nd")
-lifo.append("3rd")
+# lifo.append("1st")
+# lifo.append("2nd")
+# lifo.append("3rd")
 
-print(lifo.pop())
-print(lifo.pop())
-print(lifo.pop())
+# print(lifo.pop())
+# print(lifo.pop())
+# print(lifo.pop())
+
+#Representing Priority Queues With a Heap
+fruits = []
+heappush(fruits, "orange")
+heappush(fruits, "apple")
+heappush(fruits, "banana")
+
+print(fruits)
