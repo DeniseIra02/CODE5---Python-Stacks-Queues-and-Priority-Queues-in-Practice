@@ -122,20 +122,29 @@ def breadth_first_search(graph, source, predicate):
 #     print("Not Found")
 
 #test breadth-first transversal and search implementation
-from graph import (
-    City,
-    load_graph,
-    breadth_first_traverse,
-    breadth_first_search as bfs,
-)
+# from graph import (
+#     City,
+#     load_graph,
+#     breadth_first_traverse,
+#     breadth_first_search as bfs,
+# )
 
-def is_twentieth_century(city):
-    return city.year and 1901 <= city.year <= 2000
+# def is_twentieth_century(city):
+#     return city.year and 1901 <= city.year <= 2000
 
+# nodes, graph = load_graph("roadmap.dot", City.from_dict)
+
+# city = bfs(graph, nodes["edinburgh"], is_twentieth_century)
+# print(city.name)
+
+# for city in breadth_first_traverse(graph, nodes["edinburgh"]):
+#     print(city.name)
+
+#Shortest Path Using Breadth-First Traversal
 nodes, graph = load_graph("roadmap.dot", City.from_dict)
 
-city = bfs(graph, nodes["edinburgh"], is_twentieth_century)
-print(city.name)
+city1 = nodes["aberdeen"]
+city2 = nodes["perth"]
 
-for city in breadth_first_traverse(graph, nodes["edinburgh"]):
-    print(city.name)
+for i, path in enumerate(nx.all_shortest_paths(graph, city1, city2), 1):
+    print(f"{i}.", " → ".join(city.name for city in path))
