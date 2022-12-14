@@ -36,9 +36,16 @@ def load_graph(filename, node_factory):
     )
     
 #Test:
+
 #use pygraphviz to read the sample DOT file
 #print(nx.nx_agraph.read_dot("roadmap.dot"))
 
 #reading DOT file (nodes)
 # graph = nx.nx_agraph.read_dot("roadmap.dot")
 # print(graph.nodes["london"])
+
+#to identify the graph and node
+# nodes, graph = load_graph("roadmap.dot", City.from_dict)
+
+# print(nodes["london"])
+# print(graph)
