@@ -78,6 +78,14 @@ heappush(fruits, "orange")
 heappush(fruits, "apple")
 heappush(fruits, "banana")
 
-heappop(fruits)
+print(fruits)
 
-#print(fruits)
+#Popping an element from a heap
+fruits = []
+heappush(fruits, "orange")
+heappush(fruits, "apple")
+heappush(fruits, "banana")
+
+print(heappop(fruits))
+
+print(fruits)
