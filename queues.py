@@ -73,19 +73,27 @@ class Stack(Queue):
 # print(lifo.pop())
 
 #Representing Priority Queues With a Heap
-fruits = []
-heappush(fruits, "orange")
-heappush(fruits, "apple")
-heappush(fruits, "banana")
+# fruits = []
+# heappush(fruits, "orange")
+# heappush(fruits, "apple")
+# heappush(fruits, "banana")
 
-print(fruits)
+# print(fruits)
 
 #Popping an element from a heap
-fruits = []
-heappush(fruits, "orange")
-heappush(fruits, "apple")
-heappush(fruits, "banana")
+# fruits = []
+# heappush(fruits, "orange")
+# heappush(fruits, "apple")
+# heappush(fruits, "banana")
 
-print(heappop(fruits))
+# print(heappop(fruits))
 
-print(fruits)
+# print(fruits)
+
+#Tupple comparison
+person1 = ("John", "Brown", 42)
+person2 = ("John", "Doe", 42)
+person3 = ("John", "Doe", 24)
+
+print(person1 < person2)
+print(person2 < person3)
