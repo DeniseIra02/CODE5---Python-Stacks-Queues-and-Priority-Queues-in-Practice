@@ -71,12 +71,31 @@ def load_graph(filename, node_factory):
 #     print(f"{weights['distance']:>3} miles, {neighbor.name}")
 
 #Breadth-First Search Using a FIFO Queue
+# def is_twentieth_century(year):
+#     return year and 1901 <= year <= 2000
+
+# nodes, graph = load_graph("roadmap.dot", City.from_dict)
+
+# for node in nx.bfs_tree(graph, nodes["edinburgh"]):
+#     print("📍", node.name)
+#     if is_twentieth_century(node.year):
+#         print("Found:", node.name, node.year)
+#         break
+# else:
+#     print("Not Found")
+
+#sort the neighbors according to some criteria
 def is_twentieth_century(year):
     return year and 1901 <= year <= 2000
 
 nodes, graph = load_graph("roadmap.dot", City.from_dict)
 
-for node in nx.bfs_tree(graph, nodes["edinburgh"]):
+def order(neighbors):
+    def by_latitude(city):
+        return city.latitude
+    return iter(sorted(neighbors, key=by_latitude, reverse=True))
+
+for node in nx.bfs_tree(graph, nodes["edinburgh"], sort_neighbors=order):
     print("📍", node.name)
     if is_twentieth_century(node.year):
         print("Found:", node.name, node.year)
