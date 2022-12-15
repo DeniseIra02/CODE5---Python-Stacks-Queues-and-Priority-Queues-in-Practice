@@ -43,6 +43,12 @@ class Worker(threading.Thread):
         if self.working:
             return f"{self.product} ({self.progress}%)"
         return ":zzz: Idle"
+    
+    def simulate_idle(self):
+        self.product = None
+        self.working = False
+        self.progress = 0
+        sleep(randint(1, 3))
 
 def main(args):
     buffer = QUEUE_TYPES[args.queue]()
