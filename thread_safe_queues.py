@@ -45,6 +45,11 @@ class Product:
 
     def __str__(self):
         return self.label
+
+class Priority(IntEnum):
+    HIGH = 1
+    MEDIUM = 2
+    LOW = 3
     
 
 class Worker(threading.Thread):
