@@ -1,7 +1,7 @@
 import argparse
 import threading
-from itertools import zip_longest
 
+from itertools import zip_longest
 from queue import LifoQueue, PriorityQueue, Queue 
 from random import choice, randint
 from time import sleep
