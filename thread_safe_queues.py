@@ -3,7 +3,7 @@ import threading
 from itertools import zip_longest
 
 from queue import LifoQueue, PriorityQueue, Queue 
-from random import randint
+from random import choice, randint
 from time import sleep
 
 from rich.align import Align
