@@ -2,6 +2,8 @@ import argparse
 import threading
 
 from queue import LifoQueue, PriorityQueue, Queue 
+from random import randint
+from time import sleep
 
 QUEUE_TYPES = {
     "fifo": Queue,
